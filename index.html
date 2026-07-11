@@ -167,6 +167,39 @@
   transform: scale(1.1);
   background: #1d4ed8;
 }
+.footer-btn{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 24px;
+    border-radius:15px;
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+    font-size:15px;
+    transition:.35s;
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+
+.footer-btn:hover{
+    transform:translateY(-4px) scale(1.05);
+}
+
+.whatsapp-btn{
+    background:linear-gradient(135deg,#25D366,#128C7E);
+}
+
+.channel-btn{
+    background:linear-gradient(135deg,#16a34a,#15803d);
+}
+
+.telegram-btn{
+    background:linear-gradient(135deg,#229ED9,#0088cc);
+}
+
+.platform-btn{
+    background:linear-gradient(135deg,#f59e0b,#d97706);
+}
     </style>
     <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   </head>
@@ -352,8 +385,11 @@
 
 <div class="text-center py-10 px-4" style="border-top:1px solid #1e293b">
 
-  <p style="color:#94a3b8;font-size:15px;margin-bottom:20px">
-    صُممت بواسطة <strong style="color:#f0c040;">محمد رمضان الحرباوي</strong>
+  <p style="color:#94a3b8;font-size:15px;margin-bottom:22px">
+    صُممت بواسطة
+    <span style="color:#f0c040;font-weight:bold;">
+      محمد رمضان الحرباوي
+    </span>
   </p>
 
   <div style="
@@ -363,99 +399,34 @@
       gap:15px;
   ">
 
-    <!-- جروب واتساب -->
-    <a
-      href="https://chat.whatsapp.com/Ca3CKBKd2lyGppckCufA9c"
-      target="_blank"
-      style="
-        display:flex;
-        align-items:center;
-        gap:10px;
-        background:linear-gradient(135deg,#25D366,#128C7E);
-        color:#fff;
-        text-decoration:none;
-        padding:14px 24px;
-        border-radius:14px;
-        font-weight:bold;
-        box-shadow:0 8px 18px rgba(37,211,102,.35);
-        transition:.3s;
-      "
-      onmouseover="this.style.transform='translateY(-3px)'"
-      onmouseout="this.style.transform='translateY(0)'"
-    >
-      💬 جروب واتساب
+    <a href="https://chat.whatsapp.com/Ca3CKBKd2lyGppckCufA9c"
+       target="_blank"
+       class="footer-btn whatsapp-btn">
+       💬 جروب واتساب
     </a>
 
-    <!-- قناة واتساب -->
-    <a
-      href="https://whatsapp.com/channel/0029VbCl4G1ElagvOK4WZS2V"
-      target="_blank"
-      style="
-        display:flex;
-        align-items:center;
-        gap:10px;
-        background:linear-gradient(135deg,#0f766e,#0d9488);
-        color:#fff;
-        text-decoration:none;
-        padding:14px 24px;
-        border-radius:14px;
-        font-weight:bold;
-        box-shadow:0 8px 18px rgba(13,148,136,.35);
-        transition:.3s;
-      "
-      onmouseover="this.style.transform='translateY(-3px)'"
-      onmouseout="this.style.transform='translateY(0)'"
-    >
-      📢 قناة واتساب
+    <a href="https://whatsapp.com/channel/0029VbCl4G1ElagvOK4WZS2V"
+       target="_blank"
+       class="footer-btn channel-btn">
+       📢 قناة واتساب
     </a>
 
-    <!-- قناة تليجرام -->
-    <a
-      href="https://t.me/geniuses_youssef"
-      target="_blank"
-      style="
-        display:flex;
-        align-items:center;
-        gap:10px;
-        background:linear-gradient(135deg,#229ED9,#0088cc);
-        color:#fff;
-        text-decoration:none;
-        padding:14px 24px;
-        border-radius:14px;
-        font-weight:bold;
-        box-shadow:0 8px 18px rgba(34,158,217,.35);
-        transition:.3s;
-      "
-      onmouseover="this.style.transform='translateY(-3px)'"
-      onmouseout="this.style.transform='translateY(0)'"
-    >
-      ✈️ قناة تليجرام
+    <a href="https://t.me/geniuses_youssef"
+       target="_blank"
+       class="footer-btn telegram-btn">
+       ✈️ قناة تليجرام
     </a>
 
-    <a
-  href="https://mhmdrmdan.yobader.com"
-  target="_blank"
-  style="
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    background:linear-gradient(135deg,#f59e0b,#d97706);
-    color:#fff;
-    text-decoration:none;
-    padding:14px 24px;
-    border-radius:14px;
-    font-weight:bold;
-    box-shadow:0 8px 18px rgba(245,158,11,.35);
-    transition:.3s;
-  "
-  onmouseover="this.style.transform='translateY(-3px)'"
-  onmouseout="this.style.transform='translateY(0)'"
->
-  🎓 منصة محمد رمضان
-</a>
+    <a href="https://mhmdrmdan.yobader.com"
+       target="_blank"
+       class="footer-btn platform-btn">
+       🎓 المنصة التعليمية
+    </a>
+
   </div>
 
-</div>    <script>
+</div>
+   <script>
       const books = [
     {
   title: "كتاب التاريخ",
@@ -681,9 +652,48 @@
     `;
           grid.appendChild(card);
         });
-        if (filtered.length === 0)
-          grid.innerHTML = `<div class="col-span-full text-center py-12" style="color: ${textColor};">لا توجد كتب تطابق البحث</div>`;
-        lucide.createIcons();
+if (filtered.length === 0) {
+  const searchValue = document.getElementById("search-input").value;
+
+  grid.innerHTML = `
+    <div class="col-span-full text-center py-12">
+      <div style="font-size:70px;">📚</div>
+
+      <h2 style="color:${titleColor}; font-size:24px; margin:15px 0;">
+        لم نعثر على هذا الكتاب
+      </h2>
+
+      <p style="color:${textColor}; font-size:16px; margin-bottom:20px;">
+        سنقوم بإضافته قريبًا بإذن الله.
+      </p>
+
+      <a
+        href="https://wa.me/201500492203?text=${encodeURIComponent(
+          "السلام عليكم، أريد إضافة هذا الكتاب إلى المكتبة:\n\n" + searchValue
+        )}"
+        target="_blank"
+        style="
+          display:inline-flex;
+          align-items:center;
+          gap:8px;
+          background:#25D366;
+          color:#fff;
+          text-decoration:none;
+          padding:14px 24px;
+          border-radius:999px;
+          font-weight:bold;
+          transition:.3s;
+        "
+        onmouseover="this.style.transform='scale(1.05)'"
+        onmouseout="this.style.transform='scale(1)'"
+      >
+        💬 كلم الدعم لإضافة الكتاب
+      </a>
+    </div>
+  `;
+
+  return;
+}        lucide.createIcons();
       }
 
       function filterBooks(cat) {
