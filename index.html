@@ -342,6 +342,7 @@
   >
      مواد شرعية
   </button>
+
   <button
     onclick="filterBooks('تاريخ')"
     data-filter="تاريخ"
@@ -368,6 +369,16 @@
   >
      الرياضيات
   </button>
+
+      <button
+    onclick="filterBooks('برمجة')"
+    data-filter="برمجة"
+    class="filter-btn px-4 py-2 rounded-full text-sm font-semibold"
+    style="background-color: #1e293b; color: #94a3b8"
+  >
+     البرمجة
+  </button>
+
   <button
     onclick="filterBooks('فيزياء')"
     data-filter="فيزياء"
@@ -488,6 +499,28 @@
   date: 20260305,
   popular: 75,
 },  
+
+{
+  title: "كورس تأسيس رياضة",
+  icon: "🎥",
+  cat: "رياضيات",
+  grade: "2sec",
+  desc: "كورس تأسيس الرياضيات للصف الثاني الثانوي.",
+  url: "https://drive.google.com/file/d/1eZAa1apbXTuTGpokc2oF5MZVLzxrvvi5/view?usp=sharing",
+  date: 20260712,
+  popular: 100,
+},
+
+{
+  title: "الفيزياء",
+  icon: "⚛️",
+  cat: "فيزياء",
+  grade: "2sec",
+  desc: "كتاب الفيزياء للصف الثاني الثانوي (PDF).",
+  url: "https://drive.google.com/file/d/11TRHopBJ1tfw4D26ScOpLGH4ff-Lt0US/view?usp=sharing",
+  date: 20260712,
+  popular: 100,
+},
       ];
 
       let currentFilter = "all",
@@ -688,7 +721,7 @@ if (filtered.length === 0) {
         onmouseout="this.style.transform='scale(1)'"
       >
         💬 كلم الدعم لإضافة الكتاب
-      </a>
+      </a> 
     </div>
   `;
 
