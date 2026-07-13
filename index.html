@@ -387,6 +387,15 @@
   >
     ⚛️ الفيزياء
   </button>
+
+  <button
+  onclick="filterBooks('امتحانات')"
+  data-filter="امتحانات"
+  class="filter-btn px-4 py-2 rounded-full text-sm font-semibold"
+  style="background-color: #1e293b; color: #94a3b8"
+>
+  📝 الامتحانات
+</button>
 </div>
 
 <div
@@ -528,6 +537,17 @@
   grade: "2sec",
   desc: "الجزء الأول من الكورس التأسيسي للبرمجة – إعداد وتجهيز: محمد رمضان الحرباوي.",
   url: "https://drive.google.com/file/d/1VV4ooxWD_yGBb1atk14ndQ1RmDPPvbgv/view?usp=sharing",
+  date: 20260713,
+  popular: 100,
+},
+
+{
+  title: "امتحان التاريخ - الدرس الأول",
+  icon: "📝",
+  cat: "امتحانات",
+  grade: "2sec",
+  desc: "امتحان على الدرس الأول في التاريخ بالإجابات.",
+  url: "/index (1).html",
   date: 20260713,
   popular: 100,
 },
@@ -690,7 +710,10 @@
       <span class="inline-block text-xs px-2 py-1 rounded-full mb-3 w-fit font-semibold" style="background-color: ${tagBg}; color: ${textColor};">${book.cat}</span>
       <p class="text-sm mb-4 flex-1" style="color: ${textColor};">${book.desc}</p>
       <div class="flex gap-2">
-        <a href="${book.url}" target="_blank" rel="noopener noreferrer" class="download-btn flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-bold" style="background-color: ${titleColor}; color: ${isDarkMode ? "#0f172a" : "#ffffff"};"><i data-lucide="download" style="width:18px;height:18px;"></i>تحميل</a>
+<a href="${book.url}" target="_blank" rel="noopener noreferrer" class="download-btn flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-bold" style="background-color: ${titleColor}; color: ${isDarkMode ? "#0f172a" : "#ffffff"};">
+  <i data-lucide="external-link" style="width:18px;height:18px;"></i>
+  فتح
+</a>
       </div>
     `;
           grid.appendChild(card);
