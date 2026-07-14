@@ -1,0 +1,102 @@
+* {
+  font-family: "Noto Kufi Arabic", sans-serif;
+}
+
+.book-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.download-btn {
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.download-btn:hover {
+  transform: scale(1.05);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-card {
+  animation: fadeUp 0.5s ease forwards;
+  opacity: 0;
+}
+
+/* ....... باقي الكود كله ....... */
+
+.platform-btn{
+    background:linear-gradient(135deg,#f59e0b,#d97706);
+}
+/* ===========================
+   زر تثبيت التطبيق
+=========================== */
+
+#installBtn{
+  position: fixed;
+  bottom: 165px; /* فوق زر الواتساب */
+  left: 25px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 18px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg,#f59e0b,#d97706);
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,.25);
+  transition: .35s;
+  z-index: 9999;
+}
+
+#installBtn:hover{
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(0,0,0,.35);
+}
+
+#installBtn i{
+  width:20px;
+  height:20px;
+}
+
+/* للموبايل */
+
+@media (max-width:768px){
+
+  #installBtn{
+    bottom:145px;
+    left:15px;
+    padding:12px 16px;
+    font-size:14px;
+  }
+
+  .whatsapp-float{
+    left:15px;
+    bottom:20px;
+  }
+
+  #scrollTopBtn{
+    right:15px;
+    bottom:20px;
+  }
+
+}
