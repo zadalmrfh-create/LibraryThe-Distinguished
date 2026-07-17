@@ -337,6 +337,95 @@
     font-size:17px;
     font-weight:bold;
 }
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+height:65px;
+background:#0b1220;
+display:flex;
+justify-content:space-around;
+align-items:center;
+box-shadow:0 -5px 20px rgba(0,0,0,.35);
+z-index:99999;
+}
+
+.bottom-nav button{
+flex:1;
+height:100%;
+border:none;
+background:none;
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.bottom-nav button:hover{
+background:#1e293b;
+color:#fbbf24;
+}
+
+.contact-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.75);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:999999;
+}
+
+.contact-box{
+width:90%;
+max-width:650px;
+background:#111827;
+border-radius:20px;
+padding:30px;
+color:white;
+text-align:center;
+position:relative;
+}
+
+.close-contact{
+position:absolute;
+left:20px;
+top:15px;
+font-size:25px;
+cursor:pointer;
+}
+
+.features-list{
+text-align:right;
+margin:20px 0;
+line-height:2.2;
+}
+
+.contact-btn{
+display:block;
+margin:15px auto;
+padding:15px;
+border-radius:15px;
+font-weight:bold;
+text-decoration:none;
+color:white;
+transition:.3s;
+}
+
+.contact-btn:hover{
+transform:scale(1.05);
+}
+
+.whatsapp{
+background:#25D366;
+}
+
+.platform{
+background:#f59e0b;
+}
     </style>
     <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   </head>
@@ -1306,6 +1395,79 @@ setInterval(() => {
     document.getElementById("seconds").textContent = String(seconds).padStart(2,'0');
 
 },1000);
+
+function openContact(){
+    document.getElementById("contactPage").style.display="flex";
+}
+
+function closeContact(){
+    document.getElementById("contactPage").style.display="none";
+}
     </script>
+
+    <!-- نافذة تواصل معنا -->
+<div id="contactPage" class="contact-overlay">
+
+  <div class="contact-box">
+
+    <span class="close-contact" onclick="closeContact()">✖</span>
+
+    <h2>📞 تواصل معنا</h2>
+
+    <p>
+      مكتبة ثانية بكالوريا هي مكتبة مجانية برعاية
+      <strong>محمد رمضان الحرباوي</strong>
+    </p>
+
+    <br>
+
+    <h3>✨ مميزات المكتبة</h3>
+
+    <ul class="features-list">
+      <li>✅ جميع الكتب مجانًا.</li>
+      <li>✅ يتم إضافة الكتب الجديدة باستمرار.</li>
+      <li>✅ كورسات مجانية.</li>
+      <li>✅ امتحانات إلكترونية.</li>
+      <li>✅ سهولة البحث عن أي كتاب.</li>
+      <li>✅ سيتم توفير جميع كتب المنهج الرسمي قريبًا.</li>
+      <li>✅ المنصة برعاية محمد رمضان الحرباوي.</li>
+    </ul>
+
+    <br>
+
+    <a
+      href="https://wa.me/201500492203"
+      target="_blank"
+      class="contact-btn whatsapp"
+    >
+      📱 واتساب
+      <br>
+      01500492203
+    </a>
+
+    <a
+      href="https://mhmdrmdan.yobader.com"
+      target="_blank"
+      class="contact-btn platform"
+    >
+      🎓 المنصة التعليمية
+    </a>
+
+  </div>
+
+</div>
+
+<!-- الشريط السفلي -->
+<div class="bottom-nav">
+
+    <button onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        🏠 الرئيسية
+    </button>
+
+    <button onclick="openContact()">
+        📞 تواصل معنا
+    </button>
+
+</div>
   </body>
 </html>
