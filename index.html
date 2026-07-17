@@ -259,6 +259,84 @@
 }
 
 }
+
+.countdown-box{
+    max-width:850px;
+    margin:35px auto;
+    padding:30px;
+    border-radius:25px;
+    text-align:center;
+
+    background:linear-gradient(135deg,#1e293b,#0f172a);
+
+    border:2px solid #f0c040;
+
+    box-shadow:
+    0 0 25px rgba(240,192,64,.25),
+    0 15px 40px rgba(0,0,0,.35);
+}
+
+.countdown-title{
+    font-size:26px;
+    font-weight:bold;
+    color:#f8c537;
+    margin-bottom:25px;
+}
+
+.countdown-timer{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.time-box{
+    width:120px;
+    height:120px;
+    border-radius:20px;
+
+    background:linear-gradient(180deg,#334155,#1e293b);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    transition:.3s;
+}
+
+.time-box:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 25px rgba(240,192,64,.3);
+}
+
+.time-box span{
+    font-size:42px;
+    font-weight:800;
+    color:#f8c537;
+    line-height:1;
+}
+
+.time-box small{
+    margin-top:10px;
+    color:#cbd5e1;
+    font-size:15px;
+}
+
+.countdown-text{
+    margin-top:25px;
+    color:#e2e8f0;
+    font-size:18px;
+}
+
+.countdown-author{
+    margin-top:18px;
+    color:#f8c537;
+    font-size:17px;
+    font-weight:bold;
+}
     </style>
     <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   </head>
@@ -293,16 +371,41 @@
         style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%)"
       >
         <div class="text-5xl mb-4">📚</div>
-        <h1
-          id="main-title"
-          class="text-3xl md:text-4xl font-extrabold mb-3"
-          style="color: #f0c040"
-        >
-          مكتبة تانية بكالوريا  
-        </h1>
-        <p id="main-subtitle" class="text-lg" style="color: #94a3b8">
-          الترم الأول – كل الكتب في مكان واحد 🚀
-        </p>
+<div class="countdown-box">
+    <div class="countdown-title">
+        🚀 العد التنازلي لإضافة كتب منهج البكالوريا
+    </div>
+
+    <div class="countdown-timer">
+        <div class="time-box">
+            <span id="days">10</span>
+            <small>يوم</small>
+        </div>
+
+        <div class="time-box">
+            <span id="hours">00</span>
+            <small>ساعة</small>
+        </div>
+
+        <div class="time-box">
+            <span id="minutes">00</span>
+            <small>دقيقة</small>
+        </div>
+
+        <div class="time-box">
+            <span id="seconds">00</span>
+            <small>ثانية</small>
+        </div>
+    </div>
+
+    <p class="countdown-text">
+        📚 سيتم توفير جميع كتب المنهج الرسمي قريبًا بإذن الله
+    </p>
+
+    <div class="countdown-author">
+        ✨ برعاية محمد رمضان الحرباوي
+    </div>
+</div>
 <label class="theme-switch">
   <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
   <span class="slider">
@@ -1166,6 +1269,43 @@ function scrollToTop() {
     behavior: "smooth",
   });
 }
+
+// 10 أيام من أول فتح الصفحة
+let targetDate = localStorage.getItem("countdownDate");
+
+if(!targetDate){
+    targetDate = new Date().getTime() + (10 * 24 * 60 * 60 * 1000);
+    localStorage.setItem("countdownDate", targetDate);
+}
+
+targetDate = Number(targetDate);
+
+setInterval(() => {
+
+    let now = new Date().getTime();
+    let distance = targetDate - now;
+
+    if(distance <= 0){
+        document.getElementById("countdownBox").innerHTML =
+        `
+        <h2 style="color:#22c55e">
+            🎉 تم توفير كتب المنهج بالكامل
+        </h2>
+        `;
+        return;
+    }
+
+    let days = Math.floor(distance / (1000*60*60*24));
+    let hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+    let minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+    let seconds = Math.floor((distance % (1000*60)) / 1000);
+
+    document.getElementById("days").textContent = days;
+    document.getElementById("hours").textContent = String(hours).padStart(2,'0');
+    document.getElementById("minutes").textContent = String(minutes).padStart(2,'0');
+    document.getElementById("seconds").textContent = String(seconds).padStart(2,'0');
+
+},1000);
     </script>
   </body>
 </html>
