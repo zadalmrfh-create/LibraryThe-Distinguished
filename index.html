@@ -338,96 +338,97 @@
     font-weight:bold;
 }
 
-.bottom-nav{
+#menuBtn{
 position:fixed;
-bottom:0;
-left:0;
-right:0;
-height:65px;
-background:#0b1220;
-display:flex;
-justify-content:space-around;
-align-items:center;
-box-shadow:0 -5px 20px rgba(0,0,0,.35);
-z-index:99999;
-}
-
-.bottom-nav button{
-flex:1;
-height:100%;
+top:20px;
+left:20px;
+width:48px;
+height:48px;
 border:none;
-background:none;
-color:white;
-font-size:16px;
-font-weight:bold;
+border-radius:12px;
+background:#fbbf24;
+color:#111827;
+font-size:24px;
 cursor:pointer;
+z-index:99999;
+box-shadow:0 10px 25px rgba(0,0,0,.3);
 transition:.3s;
 }
 
-.bottom-nav button:hover{
+#menuBtn:hover{
+transform:scale(1.08);
+}
+
+.menu-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.5);
+display:none;
+z-index:9998;
+}
+
+.side-menu{
+position:fixed;
+top:0;
+right:-340px;
+width:320px;
+height:100%;
+background:#0f172a;
+transition:.35s;
+z-index:9999;
+overflow:auto;
+box-shadow:-10px 0 30px rgba(0,0,0,.35);
+}
+
+.side-menu.open{
+right:0;
+}
+
+.menu-header{
+padding:25px;
 background:#1e293b;
+font-size:22px;
+font-weight:bold;
+text-align:center;
 color:#fbbf24;
 }
 
-.contact-overlay{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.75);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:999999;
-}
-
-.contact-box{
-width:90%;
-max-width:650px;
-background:#111827;
-border-radius:20px;
-padding:30px;
-color:white;
-text-align:center;
-position:relative;
-}
-
-.close-contact{
-position:absolute;
-left:20px;
-top:15px;
-font-size:25px;
-cursor:pointer;
-}
-
-.features-list{
-text-align:right;
-margin:20px 0;
-line-height:2.2;
-}
-
-.contact-btn{
+.side-menu a{
 display:block;
-margin:15px auto;
-padding:15px;
-border-radius:15px;
-font-weight:bold;
-text-decoration:none;
+padding:18px 22px;
 color:white;
+text-decoration:none;
+border-bottom:1px solid rgba(255,255,255,.06);
 transition:.3s;
 }
 
-.contact-btn:hover{
-transform:scale(1.05);
+.side-menu a:hover{
+background:#1e293b;
+padding-right:30px;
+color:#fbbf24;
 }
 
-.whatsapp{
-background:#25D366;
+.menu-info{
+padding:20px;
+color:#cbd5e1;
+line-height:2;
 }
 
-.platform{
-background:#f59e0b;
+.menu-info h3{
+color:#fbbf24;
+margin-bottom:15px;
+}
+
+.menu-info hr{
+margin:20px 0;
+border-color:#334155;
 }
     </style>
     <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+
+    <button id="menuBtn" onclick="openMenu()">
+    ☰
+</button>
   </head>
 
   <a
@@ -449,7 +450,10 @@ background:#f59e0b;
 <button id="scrollTopBtn" onclick="scrollToTop()">
   ⬆
 </button>
+
+
   <body class="h-full">
+    
     <div
       id="app"
       class="w-full h-full overflow-auto"
@@ -1396,77 +1400,67 @@ setInterval(() => {
 
 },1000);
 
-function openContact(){
-    document.getElementById("contactPage").style.display="flex";
+function openMenu(){
+
+document.getElementById("sideMenu").classList.add("open");
+
+document.getElementById("menuOverlay").style.display="block";
+
 }
 
-function closeContact(){
-    document.getElementById("contactPage").style.display="none";
+function closeMenu(){
+
+document.getElementById("sideMenu").classList.remove("open");
+
+document.getElementById("menuOverlay").style.display="none";
+
 }
     </script>
+    <div id="menuOverlay" class="menu-overlay" onclick="closeMenu()"></div>
 
-    <!-- نافذة تواصل معنا -->
-<div id="contactPage" class="contact-overlay">
+<div id="sideMenu" class="side-menu">
 
-  <div class="contact-box">
+    <div class="menu-header">
+        📚 مكتبة تانية بكالوريا
+    </div>
 
-    <span class="close-contact" onclick="closeContact()">✖</span>
+    <a href="#" onclick="closeMenu()">🏠 الرئيسية</a>
 
-    <h2>📞 تواصل معنا</h2>
-
-    <p>
-      مكتبة ثانية بكالوريا هي مكتبة مجانية برعاية
-      <strong>محمد رمضان الحرباوي</strong>
-    </p>
-
-    <br>
-
-    <h3>✨ مميزات المكتبة</h3>
-
-    <ul class="features-list">
-      <li>✅ جميع الكتب مجانًا.</li>
-      <li>✅ يتم إضافة الكتب الجديدة باستمرار.</li>
-      <li>✅ كورسات مجانية.</li>
-      <li>✅ امتحانات إلكترونية.</li>
-      <li>✅ سهولة البحث عن أي كتاب.</li>
-      <li>✅ سيتم توفير جميع كتب المنهج الرسمي قريبًا.</li>
-      <li>✅ المنصة برعاية محمد رمضان الحرباوي.</li>
-    </ul>
-
-    <br>
-
-    <a
-      href="https://wa.me/201500492203"
-      target="_blank"
-      class="contact-btn whatsapp"
-    >
-      📱 واتساب
-      <br>
-      01500492203
+    <a href="https://mhmdrmdan.yobader.com" target="_blank">
+        🎓 المنصة التعليمية
     </a>
 
-    <a
-      href="https://mhmdrmdan.yobader.com"
-      target="_blank"
-      class="contact-btn platform"
-    >
-      🎓 المنصة التعليمية
+    <a href="https://wa.me/201500492203" target="_blank">
+        💬 واتساب
     </a>
 
-  </div>
+    <a href="https://whatsapp.com/channel/0029VbCl4G1ElagvOK4WZS2V" target="_blank">
+        📢 قناة واتساب
+    </a>
 
-</div>
+    <a href="https://t.me/geniuses_youssef" target="_blank">
+        ✈️ تليجرام
+    </a>
 
-<!-- الشريط السفلي -->
-<div class="bottom-nav">
+    <div class="menu-info">
 
-    <button onclick="window.scrollTo({top:0,behavior:'smooth'})">
-        🏠 الرئيسية
-    </button>
+        <h3>⭐ مميزات المكتبة</h3>
 
-    <button onclick="openContact()">
-        📞 تواصل معنا
-    </button>
+        <p>✔ جميع الكتب مجانًا</p>
+        <p>✔ إضافة الكتب أولًا بأول</p>
+        <p>✔ كورسات مجانية</p>
+        <p>✔ امتحانات إلكترونية</p>
+        <p>✔ بحث سريع داخل المكتبة</p>
+        <p>✔ سيتم إضافة جميع كتب المنهج الرسمي قريبًا</p>
+
+        <hr>
+
+        <strong>
+            برعاية<br>
+            محمد رمضان الحرباوي
+        </strong>
+
+    </div>
 
 </div>
   </body>
