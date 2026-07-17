@@ -423,6 +423,119 @@ margin-bottom:15px;
 margin:20px 0;
 border-color:#334155;
 }
+
+/* ===========================
+   شاشة التحميل
+=========================== */
+
+#loader{
+    position:fixed;
+    inset:0;
+    background:#0f172a;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:999999;
+    transition:.6s;
+}
+
+.loader-box{
+    text-align:center;
+}
+
+.loader-icon{
+    font-size:70px;
+    animation:bounce 1.3s infinite;
+}
+
+.loader-box h1{
+    color:#f0c040;
+    margin-top:15px;
+    font-size:32px;
+}
+
+.loader-box p{
+    color:#94a3b8;
+    margin-top:10px;
+    margin-bottom:20px;
+}
+
+.loader-bar{
+    width:260px;
+    height:8px;
+    background:#1e293b;
+    border-radius:999px;
+    overflow:hidden;
+}
+
+.loader-progress{
+    width:0;
+    height:100%;
+    background:linear-gradient(90deg,#f0c040,#f59e0b);
+    animation:loading 2s linear forwards;
+}
+
+@keyframes loading{
+    from{
+        width:0;
+    }
+    to{
+        width:100%;
+    }
+}
+
+@keyframes bounce{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+/*==============================
+عداد المحتويات
+==============================*/
+
+.library-stats{
+    max-width:1200px;
+    margin:35px auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:18px;
+    padding:0 20px;
+}
+
+.stat-card{
+    background:#1e293b;
+    border:1px solid #334155;
+    border-radius:18px;
+    padding:25px;
+    text-align:center;
+    transition:.35s;
+}
+
+.stat-card:hover{
+    transform:translateY(-8px);
+    border-color:#f0c040;
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+}
+
+.stat-icon{
+    font-size:40px;
+}
+
+.stat-number{
+    font-size:34px;
+    font-weight:bold;
+    color:#f0c040;
+    margin:12px 0;
+}
+
+.stat-title{
+    color:#cbd5e1;
+    font-size:15px;
+}
     </style>
     <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
 
@@ -454,6 +567,23 @@ border-color:#334155;
 
   <body class="h-full">
     
+    <div id="loader">
+
+    <div class="loader-box">
+
+        <div class="loader-icon">📚</div>
+
+        <h1>مكتبة الثانوية العامة</h1>
+
+        <p>جارِ تحميل المحتوى...</p>
+
+        <div class="loader-bar">
+            <div class="loader-progress"></div>
+        </div>
+
+    </div>
+
+</div>
     <div
       id="app"
       class="w-full h-full overflow-auto"
@@ -499,6 +629,7 @@ border-color:#334155;
         ✨ برعاية محمد رمضان الحرباوي
     </div>
 </div>
+
 <label class="theme-switch">
   <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
   <span class="slider">
@@ -673,6 +804,34 @@ border-color:#334155;
 </button>
 </div>
 
+<!-- عداد المحتويات -->
+<div id="libraryStats" class="library-stats">
+
+    <div class="stat-card">
+        <div class="stat-icon">📚</div>
+        <div class="stat-number" id="booksCount">0</div>
+        <div class="stat-title">الكتب</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">📝</div>
+        <div class="stat-number" id="examCount">0</div>
+        <div class="stat-title">الامتحانات</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">🎓</div>
+        <div class="stat-number" id="courseCount">0</div>
+        <div class="stat-title">الكورسات</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">📄</div>
+        <div class="stat-number" id="notesCount">0</div>
+        <div class="stat-title">المذكرات</div>
+    </div>
+
+</div>
 <div
   id="books-grid"
   class="max-w-6xl mx-auto px-4 pb-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
@@ -1474,6 +1633,59 @@ document.getElementById("sideMenu").classList.remove("open");
 document.getElementById("menuOverlay").style.display="none";
 
 }
+
+// شاشة التحميل
+
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+        const loader = document.getElementById("loader");
+
+        loader.style.opacity = "0";
+
+        loader.style.visibility = "hidden";
+
+    }, 1800);
+
+});
+
+/*==============================
+عداد المحتويات
+==============================*/
+
+function updateLibraryStats(){
+
+    const booksOnly =
+        books.filter(item =>
+            item.cat !== "امتحانات" &&
+            item.cat !== "كورسات" &&
+            item.cat !== "مذكرات"
+        ).length;
+
+    const exams =
+        books.filter(item =>
+            item.cat === "امتحانات"
+        ).length;
+
+    const courses =
+        books.filter(item =>
+            item.cat === "كورسات"
+        ).length;
+
+    const notes =
+        books.filter(item =>
+            item.cat === "مذكرات"
+        ).length;
+
+    document.getElementById("booksCount").textContent = booksOnly;
+    document.getElementById("examCount").textContent = exams;
+    document.getElementById("courseCount").textContent = courses;
+    document.getElementById("notesCount").textContent = notes;
+
+}
+
+updateLibraryStats();
     </script>
     <div id="menuOverlay" class="menu-overlay" onclick="closeMenu()"></div>
 
