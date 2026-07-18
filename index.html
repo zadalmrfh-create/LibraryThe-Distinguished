@@ -665,6 +665,200 @@ cursor:pointer;
 color:#f0c040;
 
 }
+
+.loader-credit{
+    margin-top:35px;
+    text-align:center;
+    animation:fadeUp 1s ease;
+}
+
+.loader-dev,
+.loader-owner{
+    margin:12px 0;
+    font-size:18px;
+    font-weight:700;
+    color:#cbd5e1;
+}
+
+.loader-dev span,
+.loader-owner span{
+
+    background:linear-gradient(
+        90deg,
+        #FFD700,
+        #FFF6B0,
+        #FFC107,
+        #FFD700
+    );
+
+    background-size:300%;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:goldMove 4s linear infinite;
+
+    font-size:23px;
+
+    text-shadow:
+    0 0 10px rgba(255,215,0,.35);
+
+}
+
+@keyframes goldMove{
+
+0%{
+background-position:0%;
+}
+
+100%{
+background-position:300%;
+}
+
+}
+
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(20px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+.loader-credit{
+
+    margin-top:40px;
+
+}
+
+.loader-dev,
+.loader-owner{
+
+    opacity:0;
+
+    animation:showText .8s forwards;
+
+}
+
+.loader-owner{
+
+    animation-delay:1s;
+
+    margin-top:18px;
+
+}
+
+.loader-credit .icon{
+
+    font-size:24px;
+
+    display:block;
+
+    margin-bottom:6px;
+
+}
+
+.loader-credit .title{
+
+    color:#94a3b8;
+
+    font-size:15px;
+
+    display:block;
+
+    margin-bottom:5px;
+
+    letter-spacing:1px;
+
+}
+
+.loader-credit h2{
+
+    margin:0;
+
+    font-size:28px;
+
+    font-weight:900;
+
+    background:linear-gradient(
+        90deg,
+        #FFD700,
+        #FFF4A3,
+        #FFC107,
+        #FFF8DC,
+        #FFD700
+    );
+
+    background-size:400%;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:
+    goldMove 5s linear infinite,
+    glow 2s ease-in-out infinite;
+
+}
+
+@keyframes showText{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes goldMove{
+
+0%{
+background-position:0%;
+}
+
+100%{
+background-position:400%;
+}
+
+}
+
+@keyframes glow{
+
+0%{
+
+filter:drop-shadow(0 0 3px #FFD700);
+
+}
+
+50%{
+
+filter:drop-shadow(0 0 12px #FFD700);
+
+}
+
+100%{
+
+filter:drop-shadow(0 0 3px #FFD700);
+
+}
+
+}
     </style>
     <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
 
@@ -700,7 +894,7 @@ color:#f0c040;
 
   <body class="h-full">
     
-    <div id="loader">
+<div id="loader">
 
     <div class="loader-box">
 
@@ -712,6 +906,25 @@ color:#f0c040;
 
         <div class="loader-bar">
             <div class="loader-progress"></div>
+        </div>
+
+        <!-- حقوق التصميم -->
+<div class="loader-credit">
+
+    <div class="loader-dev">
+        <span class="icon">💻</span>
+        <span class="title">تصميم وتطوير</span>
+        <h2>مالك سامح</h2>
+    </div>
+
+    <div class="loader-owner">
+        <span class="icon">👑</span>
+        <span class="title">برعاية</span>
+        <h2>محمد رمضان الحرباوي</h2>
+    </div>
+
+</div>
+
         </div>
 
     </div>
