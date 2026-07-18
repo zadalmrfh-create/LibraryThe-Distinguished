@@ -722,10 +722,12 @@ color:#f0c040;
       class="w-full h-full overflow-auto"
       style="background-color: #0f172a"
     >
-      <div
-        class="text-center py-10 px-4"
-        style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%)"
-      >
+<div
+id="header"
+class="text-center py-10 px-4"
+style="background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%)"
+>
+
         <div class="text-5xl mb-4">📚</div>
 <div class="countdown-box">
     <div class="countdown-title">
@@ -1492,14 +1494,20 @@ function toggleTheme() {
   isDarkMode = !isDarkMode;
 
   const app = document.getElementById("app");
-  const btn = document.getElementById("theme-toggle");
+  const header = document.getElementById("header");
+const btn = document.getElementById("themeToggle");
 
   if (isDarkMode) {
+    header.style.background =
+    "linear-gradient(135deg,#1e293b 0%,#0f172a 100%)";
     app.style.backgroundColor = "#0f172a";
     btn.textContent = "🌙 وضع ليلي";
     btn.style.backgroundColor = "#1e293b";
     btn.style.color = "#f0c040";
-  } else {
+  } 
+  else {
+    header.style.background =
+    "linear-gradient(135deg,#fde68a 0%,#ffffff 100%)";
     app.style.backgroundColor = "#f8fafc";
     btn.textContent = "☀️ وضع نهاري";
     btn.style.backgroundColor = "#ffffff";
