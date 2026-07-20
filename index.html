@@ -962,6 +962,73 @@ opacity:1;
 transform:translateY(0);
 }
 }
+#homePage{
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:linear-gradient(135deg,#0f172a,#1e293b);
+
+text-align:center;
+
+padding:20px;
+
+}
+
+.home-container h1{
+
+font-size:48px;
+
+color:#f0c040;
+
+margin:20px 0;
+
+}
+
+.home-container p{
+
+color:#cbd5e1;
+
+font-size:20px;
+
+margin-bottom:40px;
+
+}
+
+.home-btn{
+
+background:#f0c040;
+
+color:#111827;
+
+border:none;
+
+padding:18px 45px;
+
+border-radius:50px;
+
+font-size:22px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.home-btn:hover{
+
+transform:scale(1.08);
+
+box-shadow:0 0 30px #f0c040;
+
+}
     </style>
     <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
 
@@ -1006,6 +1073,8 @@ transform:translateY(0);
 
   <body class="h-full">
     
+
+    
 <div id="loader">
 
     <div class="loader-box">
@@ -1042,6 +1111,30 @@ transform:translateY(0);
     </div>
 
 </div>
+</div>
+
+<div id="homePage">
+
+    <div class="home-container">
+
+        <div style="font-size:90px;">📚</div>
+
+        <h1>مكتبة الثانوية العامة</h1>
+
+        <p>
+            جميع الكتب • المذكرات • الامتحانات • الكورسات
+            مجانًا
+        </p>
+
+        <button onclick="openLibrary()" class="home-btn">
+            🚀 دخول المكتبة
+        </button>
+
+    </div>
+
+</div>
+<div id="libraryPage" style="display:none;">
+
     <div
       id="app"
       class="w-full h-full overflow-auto"
@@ -2507,6 +2600,14 @@ item.classList.toggle("active");
 };
 
 });
+
+function openLibrary(){
+
+    document.getElementById("homePage").style.display="none";
+
+    document.getElementById("libraryPage").style.display="block";
+
+}
     </script>
 
 
