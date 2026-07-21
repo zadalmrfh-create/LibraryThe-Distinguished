@@ -536,24 +536,34 @@ border-color:#334155;
 
 #shareBtn{
     position:fixed;
-    bottom:75px;
+    bottom:25px;
     right:25px;
-    background:#3b82f6;
-    color:#fff;
+
+    width:58px;
+    height:58px;
+
     border:none;
-    border-radius:50px;
-    padding:12px 20px;
-    font-size:15px;
-    font-weight:bold;
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#3b82f6,#2563eb);
+    color:#fff;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:26px;
     cursor:pointer;
-    box-shadow:0 10px 25px rgba(0,0,0,.3);
+
+    box-shadow:0 10px 25px rgba(59,130,246,.4);
+
     transition:.3s;
     z-index:9999;
 }
 
 #shareBtn:hover{
-    transform:translateY(-3px);
-    background:#2563eb;
+    transform:scale(1.12);
+    box-shadow:0 15px 35px rgba(59,130,246,.6);
 }
 
 .suggest-modal{
@@ -1225,7 +1235,7 @@ box-shadow:0 0 30px #f0c040;
 </a>
 
 <button id="shareBtn" onclick="shareLibrary()">
-    📤 مشاركة المكتبة
+    <i data-lucide="share-2"></i>
 </button>
 <button id="scrollTopBtn" onclick="scrollToTop()">
   ⬆
