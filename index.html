@@ -280,24 +280,36 @@
 }
 
 #menuBtn{
-position:fixed;
-top:20px;
-left:20px;
-width:48px;
-height:48px;
-border:none;
-border-radius:12px;
-background:#fbbf24;
-color:#111827;
-font-size:24px;
-cursor:pointer;
-z-index:99999;
-box-shadow:0 10px 25px rgba(0,0,0,.3);
-transition:.3s;
+    position: fixed;
+    top: 52px;
+    left: 20px;
+    width: 58px;
+    height: 58px;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(135deg,#f8d34f,#f0c040);
+    color: #111827;
+
+    border: none;
+    border-radius: 18px;
+
+    font-size: 30px;
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(240,192,64,.35);
+
+    z-index: 9999;
+
+    transition: .3s;
 }
 
 #menuBtn:hover{
-transform:scale(1.08);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow:0 18px 35px rgba(240,192,64,.45);
 }
 
 .menu-overlay{
@@ -1028,6 +1040,10 @@ transform:scale(1.08);
 
 box-shadow:0 0 30px #f0c040;
 
+}
+
+#menuBtn{
+    display:none;
 }
     </style>
     <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
@@ -2607,7 +2623,9 @@ function openLibrary(){
 
     document.getElementById("libraryPage").style.display="block";
 
+    document.getElementById("menuBtn").style.display = "flex";
 }
+
     </script>
 
 
