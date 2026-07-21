@@ -1045,14 +1045,159 @@ box-shadow:0 0 30px #f0c040;
 #menuBtn{
     display:none;
 }
+.motivation-box{
+    max-width:1100px;
+    margin:35px auto;
+    padding:30px;
+
+    border-radius:24px;
+
+    background:linear-gradient(135deg,#f0c040,#ffd95c,#f0c040);
+
+    color:#111827;
+
+    display:flex;
+    gap:25px;
+    align-items:center;
+
+    box-shadow:
+        0 15px 45px rgba(240,192,64,.35);
+
+    animation:fadeUp .8s ease;
+}
+
+.motivation-icon{
+
+    width:90px;
+    height:90px;
+
+    background:#fff;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:42px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+    flex-shrink:0;
+}
+
+.motivation-content h2{
+
+    margin:0;
+    font-size:32px;
+    font-weight:900;
+
+}
+
+.motivation-content p{
+
+    margin:12px 0 18px;
+    font-size:18px;
+    line-height:1.9;
+
+}
+
+.motivation-tags{
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+
+}
+
+.motivation-tags span{
+
+    background:#fff;
+    padding:10px 18px;
+    border-radius:999px;
+    font-weight:bold;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@media(max-width:768px){
+
+.motivation-box{
+
+    flex-direction:column;
+    text-align:center;
+    padding:25px;
+
+}
+
+.motivation-content h2{
+
+    font-size:26px;
+
+}
+
+.motivation-content p{
+
+    font-size:16px;
+
+}
+
+.motivation-tags{
+
+    justify-content:center;
+
+}
+
+}
     </style>
     <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
 
-    <button id="menuBtn" onclick="openMenu()">
-    ☰
+
+    <button id="menuBtn" onclick="toggleMenu()">
+    <i data-lucide="menu"></i>
 </button>
   </head>
 
+  <section class="motivation-box">
+
+    <div class="motivation-icon">
+        🚀
+    </div>
+
+    <div class="motivation-content">
+
+        <h2>
+            ابدأ رحلتك نحو التفوق
+        </h2>
+
+        <p>
+            النجاح لا يأتي صدفة...
+            بل يبدأ بخطوة، وكل كتاب تقرؤه يقربك من حلمك.
+        </p>
+
+        <div class="motivation-tags">
+            <span>📚 أكثر من 100 كتاب</span>
+            <span>📝 امتحانات مجانية</span>
+            <span>🎥 كورسات</span>
+            <span>⭐ تحديثات مستمرة</span>
+        </div>
+
+    </div>
+
+</section>
   <div class="news-bar">
     <div class="news-content">
         🎓 رابط المنصة التعليمية الخاصة بنا:
@@ -2441,19 +2586,37 @@ setInterval(() => {
 
 },1000);
 
-function openMenu(){
+let menuOpened = false;
 
-document.getElementById("sideMenu").classList.add("open");
+function toggleMenu() {
 
-document.getElementById("menuOverlay").style.display="block";
+    if (menuOpened) {
+        closeMenu();
+    } else {
+        openMenu();
+    }
 
 }
 
-function closeMenu(){
+function openMenu() {
 
-document.getElementById("sideMenu").classList.remove("open");
+    menuOpened = true;
 
-document.getElementById("menuOverlay").style.display="none";
+    document.getElementById("sideMenu").classList.add("open");
+    document.getElementById("menuOverlay").style.display = "block";
+
+    document.getElementById("menuBtn").innerHTML = "✕";
+
+}
+
+function closeMenu() {
+
+    menuOpened = false;
+
+    document.getElementById("sideMenu").classList.remove("open");
+    document.getElementById("menuOverlay").style.display = "none";
+
+    document.getElementById("menuBtn").innerHTML = "☰";
 
 }
 
